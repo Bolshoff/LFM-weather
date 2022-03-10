@@ -36,25 +36,9 @@ function getWeather(cityName){
         .then(weather => {
             nowWeatherTabItems.temperature.innerHTML = `${Math.floor(weather.main.temp)}`;
             nowWeatherTabItems.city.innerHTML = weather.name;
-            detailsTabItems.city.innerHTML = weather.name;
-            detailsTabItems.temperature.innerHTML = `  ${Math.floor(weather.main.temp)} <span id="details-grad"></span>`;
-            detailsTabItems.feelsLike.innerHTML = `  ${Math.floor(weather.main.feels_like)}`;
-            detailsTabItems.weatherCondition.innerHTML = `  ${weather['weather'][0].main}`;
-            let sunriseTime = new Date(weather.sys.sunrise * 1000);
-            let getSunriseHour = sunriseTime.getHours();
-            let getSunriseMinutes = sunriseTime.getMinutes();
-
-            if(getSunriseMinutes < 10){ detailsTabItems.sunrise.innerHTML =`  ${getSunriseHour}:0${getSunriseMinutes}`;
-            }else  detailsTabItems.sunrise.innerHTML =`  ${getSunriseHour}:${getSunriseMinutes}`;
-
-            let sunsetTime = new Date(weather.sys.sunset * 1000);
-            let getSunsetHour = sunsetTime.getHours();
-            let getSunsetMinutes = sunsetTime.getMinutes();
-            if(getSunsetMinutes < 10){  detailsTabItems.sunset.innerHTML = `  ${getSunsetHour}:0${getSunsetMinutes}`;
-            }else detailsTabItems.sunset.innerHTML = `  ${getSunsetHour}:${getSunsetMinutes}`;
-
             let icon = "https://openweathermap.org/img/wn/" + weather["weather"][0].icon + "@2x.png";
             nowWeatherTabItems.weatherIcon.style.background = `url(${icon})`;
+            showDetailsWeather(weather);
 
         }).catch(alert);
 
@@ -102,5 +86,22 @@ function showFavoriteWeather(){
         })
     })
 }
+function showDetailsWeather(weather){
+    detailsTabItems.city.innerHTML = weather.name;
+    detailsTabItems.temperature.innerHTML = `  ${Math.floor(weather.main.temp)} <span id="details-grad"></span>`;
+    detailsTabItems.feelsLike.innerHTML = `  ${Math.floor(weather.main.feels_like)}`;
+    detailsTabItems.weatherCondition.innerHTML = `  ${weather['weather'][0].main}`;
+    let sunriseTime = new Date(weather.sys.sunrise * 1000);
+    let getSunriseHour = sunriseTime.getHours();
+    let getSunriseMinutes = sunriseTime.getMinutes();
 
+    if(getSunriseMinutes < 10){ detailsTabItems.sunrise.innerHTML =`  ${getSunriseHour}:0${getSunriseMinutes}`;
+    }else  detailsTabItems.sunrise.innerHTML =`  ${getSunriseHour}:${getSunriseMinutes}`;
+
+    let sunsetTime = new Date(weather.sys.sunset * 1000);
+    let getSunsetHour = sunsetTime.getHours();
+    let getSunsetMinutes = sunsetTime.getMinutes();
+    if(getSunsetMinutes < 10){  detailsTabItems.sunset.innerHTML = `  ${getSunsetHour}:0${getSunsetMinutes}`;
+    }else detailsTabItems.sunset.innerHTML = `  ${getSunsetHour}:${getSunsetMinutes}`;
+}
 
