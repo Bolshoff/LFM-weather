@@ -10,16 +10,9 @@ let cityName = 'Boston';
 
 getWeather(cityName);
 
-tabsItem.btnNow.addEventListener('click', () => {
-    tabsNowToggle();
-
-});
-tabsItem.btnDetails.addEventListener('click', () => {
-    tabsDetailsToggle();
-});
-tabsItem.btnForecast.addEventListener('click', () => {
-    tabsForecastToggle();
-});
+tabsItem.btnNow.addEventListener('click',  tabsNowToggle);
+tabsItem.btnDetails.addEventListener('click',tabsDetailsToggle);
+tabsItem.btnForecast.addEventListener('click', tabsForecastToggle);
 
 searchForm.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -109,4 +102,5 @@ function showFavoriteWeather(){
         })
     })
 }
+
 
