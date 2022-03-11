@@ -231,12 +231,19 @@ a {
     max-height: 345px;
     overflow-y: scroll;
     -ms-overflow-style: none;
-    scrollbar-width: none;
+    /*scrollbar-width: none;*/
     display: flex;
 
 }
+.forecast-city-name{
+    position: absolute;
+    width: 70px;
+    height: 28px;
+    padding-top: 30px;
+
+ }
 .forecast__item{
-    /*position: absolute;*/
+
     width: 265px;
     min-height: 120px;
     border: 1px solid #000000;
@@ -262,29 +269,45 @@ a {
     color: #000000;
     margin-top: 33px;
     margin-left: 5px;
+    margin-bottom: 10px;
 }
 .forecast__weather-icon{
     position: absolute;
     background: url("./img/rain.svg") no-repeat;
-    width: 31px;
-    height: 31px;
-    left: 240px;
+    width: 100px;
+    height: 100px;
+    left: 160px;
+    bottom: -35px;
 }
-.rain , .time{
+.forecast-rain , .forecast-time{
     position: absolute;
     width: 31px;
     height: 31px;
-    left: 235px;
+    left: 190px;
 }
 .hide{
     display: none;
 }
 .delete{
-    /*content: '';*/
+
     position: absolute;
     width: 10px;
     height: 10px;
     right: 5px;
     margin-top: 15px;
     background: url("./img/close.svg") no-repeat;
+}
+.forecast-city-name{
+    position: absolute;
+    height: 28px;
+    width: 76px;
+    top: -20px;
+}
+.forecast__feelslike{
+    position: absolute;
+    padding-top: 60px;
+}
+.temerature{
+    position: absolute;
+    padding-top: 10px;
 }

@@ -24,6 +24,28 @@ export const detailsTabItems ={
     sunset : document.querySelector('.sunset'),
 
 }
+export const forecastTabItems = {
+    city : document.querySelector('.forecast-city-name'),
+    date1  : document.querySelector('#date1'),
+    time1 : document.querySelector('#forecast-time1'),
+    temperature1 :  document.querySelector('#temperature1'),
+    rain1 : document.querySelector('#forecast-rain1'),
+    feelsLike1 : document.querySelector('#feels-like1'),
+    icon1 : document.querySelector('#icon1'),
+    date2  : document.querySelector('#date2'),
+    time2 : document.querySelector('#forecast-time2'),
+    temperature2 :  document.querySelector('#temperature2'),
+    rain2 : document.querySelector('#forecast-rain2'),
+    feelsLike2 : document.querySelector('#feels-like2'),
+    icon2 : document.querySelector('#icon2'),
+    date3  : document.querySelector('#date3'),
+    time3 : document.querySelector('#forecast-time3'),
+    temperature3 :  document.querySelector('#temperature3'),
+    rain3 : document.querySelector('#forecast-rain3'),
+    feelsLike3 : document.querySelector('#feels-like3'),
+    icon3 : document.querySelector('#icon3'),
+
+}
 export const searchInput = document.querySelector('.search__input')
 export const searchForm = document.querySelector('.search__form')
 
