@@ -58,7 +58,7 @@ function addFavoriteCity(){
         }
         favoriteCities.push(nowCityName);
         addFavoriteCityList(nowCityName);
-        delfavoriteCity();
+        delFavoriteCity();
         showFavoriteWeather();
 
 
@@ -70,7 +70,7 @@ function addFavoriteCity(){
 
 
 }
-function delfavoriteCity(){
+function delFavoriteCity(){
     let close = document.querySelectorAll('.delete');
     close.forEach(function (button,i ){
         button.addEventListener('click', function (){
@@ -126,19 +126,15 @@ function showWeatherForecast(cityName){
         .then(weather => {
 
             forecastTabItems.city.innerHTML = weather.city.name;
-            console.log(weather)
-            console.log(new Date (weather.list[0].dt * 1000).getHours() )
             let day = new Date (weather.list[0].dt * 1000).getDate();
             let monthShort = new Date (weather.list[0].dt * 1000).getMonth();
-            console.log(months[monthShort])
             let forecastDay = `${day} ${months[monthShort]}`;
-            console.log(forecastDay);
+            
             forecastTabItems.date1.textContent = forecastDay;
             forecastTabItems.time1.textContent =` ${(new Date (weather.list[0].dt * 1000).getHours())}:00`;
             forecastTabItems.temperature1.textContent = `Temperature: ${Math.floor(weather.list[0].main.temp)}`;
             forecastTabItems.feelsLike1.textContent = `Feels like: ${Math.floor(weather.list[0].main.feels_like)}`;
             forecastTabItems.rain1.textContent = `${weather.list[0].weather[0].main}`;
-            console.log(weather.list[0].weather[0]);
             let icon = "https://openweathermap.org/img/wn/" + weather.list[0].weather[0].icon + "@2x.png";
             forecastTabItems.icon1.style.background = `url(${icon})`;
 
@@ -147,7 +143,6 @@ function showWeatherForecast(cityName){
             forecastTabItems.temperature2.textContent = `Temperature: ${Math.floor(weather.list[1].main.temp)}`;
             forecastTabItems.feelsLike2.textContent = `Feels like: ${Math.floor(weather.list[1].main.feels_like)}`;
             forecastTabItems.rain2.textContent = `${weather.list[1].weather[0].main}`;
-            console.log(weather.list[1].weather[0]);
             let icon2 = "https://openweathermap.org/img/wn/" + weather.list[1].weather[0].icon + "@2x.png";
             forecastTabItems.icon2.style.background = `url(${icon2})`;
 
@@ -156,7 +151,6 @@ function showWeatherForecast(cityName){
             forecastTabItems.temperature3.textContent = `Temperature: ${Math.floor(weather.list[2].main.temp)}`;
             forecastTabItems.feelsLike3.textContent = `Feels like: ${Math.floor(weather.list[2].main.feels_like)}`;
             forecastTabItems.rain3.textContent = `${weather.list[2].weather[0].main}`;
-            console.log(weather.list[2].weather[0]);
             let icon3 = "https://openweathermap.org/img/wn/" + weather.list[2].weather[0].icon + "@2x.png";
             forecastTabItems.icon3.style.background = `url(${icon3})`;
 
