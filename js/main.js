@@ -43,6 +43,7 @@ function getWeather(cityName){
             let icon = "https://openweathermap.org/img/wn/" + weather["weather"][0].icon + "@2x.png";
             nowWeatherTabItems.weatherIcon.style.background = `url(${icon})`;
             showDetailsWeather(weather);
+            showWeatherForecast(cityName)
 
         }).catch(alert);
 
