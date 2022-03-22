@@ -14,3 +14,7 @@ export function getCurrentCity() {
   return localStorage.getItem("currentCity");
 
 }
+let cityList = [];
+export function setDefaultCity(){
+  localStorage.setItem("favoriteCities", JSON.stringify(cityList));
+}

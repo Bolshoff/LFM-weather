@@ -13,6 +13,7 @@ import {
   getCurrentCity,
   saveFavoriteCities,
   saveCurrentCity,
+    setDefaultCity
 } from "./storage.js";
 
 const serverUrl = "https://api.openweathermap.org/data/2.5/weather";
@@ -41,6 +42,7 @@ showWeatherForecast(cityName);
 fillFavoriteCitiesList();
 getWeather(cityName);
 showFavoriteWeather();
+setDefaultCity();
 
 tabsItem.btnNow.addEventListener("click", tabsNowToggle);
 tabsItem.btnDetails.addEventListener("click", tabsDetailsToggle);
@@ -103,9 +105,10 @@ function delFavoriteCity() {
   let close = document.querySelectorAll(".delete");
   close.forEach(function (button, i) {
     button.addEventListener("click", function () {
-      button.parentElement.remove();
+
       favoriteCities.splice(i, 1);
       saveFavoriteCities(favoriteCities);
+      button.parentElement.remove();
     });
   });
 }
