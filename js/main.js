@@ -14,6 +14,7 @@ import {
   saveFavoriteCities,
   saveCurrentCity,
     setDefaultCity
+
 } from "./storage.js";
 
 const serverUrl = "https://api.openweathermap.org/data/2.5/weather";
@@ -42,7 +43,7 @@ showWeatherForecast(cityName);
 fillFavoriteCitiesList();
 getWeather(cityName);
 showFavoriteWeather();
-setDefaultCity();
+
 
 tabsItem.btnNow.addEventListener("click", tabsNowToggle);
 tabsItem.btnDetails.addEventListener("click", tabsDetailsToggle);
@@ -84,11 +85,15 @@ function getWeather(cityName) {
 
 function addFavoriteCity() {
   let nowCityName = nowWeatherTabItems.nowCityName.textContent;
+  if(favoriteCities === null){
+    setDefaultCity();
+  }
   try {
     if (favoriteCities.includes(nowCityName)) {
       throw new Error("Город уже добавлен");
       return;
     }
+
     favoriteCities.push(nowCityName);
     addFavoriteCityList(nowCityName);
 
