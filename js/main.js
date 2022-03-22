@@ -229,7 +229,7 @@ function showWeatherForecast(cityName) {
 
 function fillFavoriteCitiesList() {
   console.log(JSON.parse(getFavoriteCities()));
-  //let favoriteCities = JSON.parse(getFavoriteCities());
+
   if (favoriteCities !== null) {
     favoriteCities.forEach((city) => addFavoriteCityList(city));
     delFavoriteCity();
