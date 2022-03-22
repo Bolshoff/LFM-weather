@@ -3,7 +3,11 @@ export function saveFavoriteCities(favoriteCities) {
 }
 
 export function getFavoriteCities() {
+  if(localStorage.getItem("favoriteCities") === null){
+    setDefaultCity();
+  }
   return localStorage.getItem("favoriteCities");
+
 }
 
 export function saveCurrentCity(currentCity) {

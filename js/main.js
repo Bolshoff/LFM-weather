@@ -85,9 +85,7 @@ function getWeather(cityName) {
 
 function addFavoriteCity() {
   let nowCityName = nowWeatherTabItems.nowCityName.textContent;
-  if(favoriteCities === null){
-    setDefaultCity();
-  }
+
   try {
     if (favoriteCities.includes(nowCityName)) {
       throw new Error("Город уже добавлен");
