@@ -55,33 +55,24 @@ searchForm.addEventListener("submit", (e) => {
   saveCurrentCity(searchInput.value);
 });
 
-function getWeather(cityName) {
+async function getWeather(cityName) {
   const url = `${serverUrl}?q=${cityName}&appid=${apiKey}&units=metric`;
+  let response = await fetch(url);
+  let weather = await response.json();
 
-  fetch(url)
-    .then((response) => {
-      if (response.ok) {
-        return response.json();
-      } else {
-        throw new Error();
-      }
-    })
-    .then((weather) => {
-      nowWeatherTabItems.temperature.innerHTML = `${Math.floor(
+    nowWeatherTabItems.temperature.innerHTML = `${Math.floor(
         weather.main.temp
-      )}`;
-      nowWeatherTabItems.city.innerHTML = weather.name;
-      forecastTabItems.city.innerHTML = weather.name;
-      let icon =
+    )}`;
+    nowWeatherTabItems.city.innerHTML = weather.name;
+    forecastTabItems.city.innerHTML = weather.name;
+    let icon =
         "https://openweathermap.org/img/wn/" +
         weather["weather"][0].icon +
         "@2x.png";
-      nowWeatherTabItems.weatherIcon.style.background = `url(${icon})`;
-      showDetailsWeather(weather);
-      showWeatherForecast(cityName);
-    })
-    .catch(alert);
-}
+    nowWeatherTabItems.weatherIcon.style.background = `url(${icon})`;
+    showDetailsWeather(weather);
+    showWeatherForecast(cityName);
+  }
 
 function addFavoriteCity() {
   let nowCityName = nowWeatherTabItems.nowCityName.textContent;
