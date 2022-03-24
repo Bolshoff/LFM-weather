@@ -11,7 +11,7 @@ import {
   tabsForecastToggle,
   tabsItem,
   tabsNowToggle,
-    delCurrentForecast
+  delCurrentForecast,
 } from "./view.js";
 import {
   getCurrentCity,
@@ -113,18 +113,27 @@ async function showWeatherForecast(cityName) {
   forecastTabItems.city.innerHTML = weather.city.name;
   const iconUrl = "https://openweathermap.org/img/wn/";
   delCurrentForecast();
-  for (let i =0; i<weather.list.length; i++) {
+  for (let i = 0; i < weather.list.length; i++) {
     let day = new Date(weather.list[i].dt * 1000).getDate();
     let monthShort = new Date(weather.list[i].dt * 1000).getMonth();
     const date = `${day} ${months[monthShort]}`;
-    const time =  `${new Date(weather.list[i].dt * 1000).getHours()}:00`;
-    const temperature = `Temperature: ${Math.floor(weather.list[i].main.temp )}`;
-    const feelslike = `Feels like: ${Math.floor(weather.list[i].main.feels_like )}`;
+    const time = `${new Date(weather.list[i].dt * 1000).getHours()}:00`;
+    const temperature = `Temperature: ${Math.floor(weather.list[i].main.temp)}`;
+    const feelslike = `Feels like: ${Math.floor(
+      weather.list[i].main.feels_like
+    )}`;
     const weatherDescription = `${weather.list[i].weather[0].main}`;
-    const icon = `${ weather.list[i].weather[0].icon}`;
+    const icon = `${weather.list[i].weather[0].icon}`;
 
-    appendViewForecastItem(date, time, temperature,feelslike, weatherDescription, icon, iconUrl );
-
+    appendViewForecastItem(
+      date,
+      time,
+      temperature,
+      feelslike,
+      weatherDescription,
+      icon,
+      iconUrl
+    );
   }
 }
 
@@ -135,8 +144,6 @@ function showFavoriteWeather() {
       getWeather(city.textContent);
       showWeatherForecast(city.textContent);
       saveCurrentCity(city.textContent);
-      console.log(city.textContent);
-
     });
   });
 }
@@ -168,10 +175,7 @@ function showDetailsWeather(weather) {
     detailsTabItems.sunset.innerHTML = `  ${getSunsetHour}:${getSunsetMinutes}`;
 }
 
-
-
 function fillFavoriteCitiesList() {
-  
   if (favoriteCities !== null) {
     favoriteCities.forEach((city) => addFavoriteCityList(city));
     delFavoriteCity();
