@@ -73,6 +73,7 @@ async function getWeather(cityName) {
   nowWeatherTabItems.weatherIcon.style.background = `url(${icon})`;
   showDetailsWeather(weather);
   showWeatherForecast(cityName);
+  setFavoriteIcon();
 }
 
 function addFavoriteCity() {
@@ -149,6 +150,7 @@ function showFavoriteWeather() {
       saveCurrentCity(city.textContent);
     });
   });
+  setFavoriteIcon();
 }
 
 function showDetailsWeather(weather) {
@@ -184,3 +186,15 @@ function fillFavoriteCitiesList() {
     delFavoriteCity();
   }
 }
+
+function setFavoriteIcon(){
+  console.log(nowWeatherTabItems.city.innerHTML);
+  if(favoriteCities.includes(nowWeatherTabItems.city.innerHTML)){
+
+      nowWeatherTabItems.favorite.style.background = 'url("./img/heartFavorite.svg")';
+  }
+  else{
+    nowWeatherTabItems.favorite.style.background = 'url("./img/heart.svg")';
+  }
+}
+
