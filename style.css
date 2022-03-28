@@ -277,14 +277,21 @@ a {
     width: 100px;
     height: 100px;
     left: 160px;
-    bottom: -35px;
+    bottom: -63px;
 }
-.forecast-rain , .forecast-time{
+ .forecast-time-span{
     position: absolute;
     width: 31px;
     height: 31px;
     left: 190px;
 }
+.forecast-rain-span {
+    position: absolute;
+    width: 31px;
+    height: 31px;
+    left: 170px;
+}
+
 .hide{
     display: none;
 }

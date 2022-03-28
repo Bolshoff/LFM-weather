@@ -57,8 +57,11 @@ searchForm.addEventListener("submit", (e) => {
 
 async function getWeather(cityName) {
   const url = `${serverUrl}?q=${cityName}&appid=${apiKey}&units=metric`;
-  let response = await fetch(url);
-  let weather = await response.json();
+
+    let response = await fetch(url)
+        .catch(err =>alert(err));
+    let weather = await response.json()
+        .catch(err=>alert(err));
 
   nowWeatherTabItems.temperature.innerHTML = `${Math.floor(weather.main.temp)}`;
   nowWeatherTabItems.city.innerHTML = weather.name;
