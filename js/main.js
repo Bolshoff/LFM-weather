@@ -190,7 +190,7 @@ function fillFavoriteCitiesList() {
 }
 
 function setFavoriteIcon(){
-  console.log(nowWeatherTabItems.city.innerHTML);
+
   if(favoriteCities.includes(nowWeatherTabItems.city.innerHTML)){
 
       nowWeatherTabItems.favorite.style.background = 'url("./img/heartFavorite.svg")';
