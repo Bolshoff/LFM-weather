@@ -104,8 +104,10 @@ function delFavoriteCity() {
       favoriteCities.splice(i, 1);
       saveFavoriteCities(favoriteCities);
       button.parentElement.remove();
+      setFavoriteIcon();
     });
   });
+
 }
 
 nowWeatherTabItems.favorite.addEventListener("click", addFavoriteCity);
