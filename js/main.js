@@ -20,6 +20,8 @@ import {
   saveFavoriteCities,
 } from "./storage.js";
 
+//import Cookies from "../js-";
+
 const serverUrl = "https://api.openweathermap.org/data/2.5/weather";
 const forecastUrl = "https://api.openweathermap.org/data/2.5/forecast";
 const apiKey = "f660a2fb1e4bad108d6160b7f58c555f";
@@ -58,10 +60,8 @@ searchForm.addEventListener("submit", (e) => {
 async function getWeather(cityName) {
   const url = `${serverUrl}?q=${cityName}&appid=${apiKey}&units=metric`;
 
-    let response = await fetch(url)
-        .catch(err =>alert(err));
-    let weather = await response.json()
-        .catch(err=>alert(err));
+  let response = await fetch(url).catch((err) => alert(err));
+  let weather = await response.json().catch((err) => alert(err));
 
   nowWeatherTabItems.temperature.innerHTML = `${Math.floor(weather.main.temp)}`;
   nowWeatherTabItems.city.innerHTML = weather.name;
@@ -95,6 +95,7 @@ function addFavoriteCity() {
   } catch (e) {
     alert(e.message);
   }
+  setCookies('favoriteCity',nowCityName ,{'max-age': 60});
 }
 
 function delFavoriteCity() {
@@ -107,7 +108,6 @@ function delFavoriteCity() {
       setFavoriteIcon();
     });
   });
-
 }
 
 nowWeatherTabItems.favorite.addEventListener("click", addFavoriteCity);
@@ -189,14 +189,38 @@ function fillFavoriteCitiesList() {
   }
 }
 
-function setFavoriteIcon(){
-
-  if(favoriteCities.includes(nowWeatherTabItems.city.innerHTML)){
-
-      nowWeatherTabItems.favorite.style.background = 'url("./img/heartFavorite.svg")';
-  }
-  else{
+function setFavoriteIcon() {
+  if (favoriteCities.includes(nowWeatherTabItems.city.innerHTML)) {
+    nowWeatherTabItems.favorite.style.background =
+      'url("./img/heartFavorite.svg")';
+  } else {
     nowWeatherTabItems.favorite.style.background = 'url("./img/heart.svg")';
   }
 }
+
+function setCookies(name, value, options = {}) {
+  options = {
+    path: '/',
+    // при необходимости добавьте другие значения по умолчанию
+    ...options
+  };
+
+  if (options.expires instanceof Date) {
+    options.expires = options.expires.toUTCString();
+  }
+
+  let updatedCookie = encodeURIComponent(name) + "=" + encodeURIComponent(value);
+
+  for (let optionKey in options) {
+    updatedCookie += "; " + optionKey;
+    let optionValue = options[optionKey];
+    if (optionValue !== true) {
+      updatedCookie += "=" + optionValue;
+    }
+  }
+
+  document.cookie = updatedCookie;
+
+}
+
 
